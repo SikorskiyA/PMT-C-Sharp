@@ -27,6 +27,7 @@ namespace task1.Controllers
             string error = "";
             string abc = "abcdefghijklmnopqrstuvwxyz";
             Dictionary<char, int> count = new Dictionary<char, int>();
+
             foreach (char ch in str)
             {
                 if (!abc.Contains(ch) || ch.ToString().ToLower() != ch.ToString())
@@ -38,11 +39,13 @@ namespace task1.Controllers
                     error += ch;
                 }
             }
+
             if (error != "")
             {
                 ViewData["error"] = error;
                 return View();
             }
+
             if (size % 2 == 0)
             {
                 string str1 = str.Substring(0, size / 2);
@@ -51,6 +54,7 @@ namespace task1.Controllers
                 {
                     char ch = str1[i];
                     res += ch;
+
                     if (!count.ContainsKey(ch))
                     {
                         count.Add(ch, 1);
@@ -64,6 +68,7 @@ namespace task1.Controllers
                 {
                     char ch = str2[i];
                     res += ch;
+
                     if (!count.ContainsKey(ch))
                     {
                         count.Add(ch, 1);
@@ -74,12 +79,14 @@ namespace task1.Controllers
                     }
                 }
             }
+
             else
             {
                 for (int i = size - 1; i >= 0; i--)
                 {
                     char ch = str[i];
                     res += ch;
+
                     if (!count.ContainsKey(ch))
                     {
                         count.Add(ch, 2);
@@ -91,14 +98,36 @@ namespace task1.Controllers
                 }
                 res += str;
             }
+
             string countstr = "Подсчёт символов:\n";
             foreach (char key in count.Keys)
             {
                 countstr += key + ": " + count[key].ToString() + '\n';
             }
+
+            int sizeNew = res.Length;
+            int firstIndex = -1;
+            int lastIndex = -1;
+            string vowels = "aeiouy";
+
+            for (int i = 0; i < sizeNew && firstIndex == -1; i++)
+            {
+                firstIndex = vowels.Contains(res[i]) ? i : -1;
+            }
+            for (int i = sizeNew - 1; i >= 0 && lastIndex == -1; i--)
+            {
+
+                lastIndex = vowels.Contains(res[i]) ? i : -1;
+            }
+
             ViewData["res"] = res;
             ViewData["count"] = countstr;
-            ViewData["rows"] = count.Count() + 1;
+            ViewData["rows"] = count.Count() + 2;
+            ViewData["longestSubstring"] = firstIndex >= 0 ? 
+                "Самая длинная подстрока, начинающаяся и заканчивающаяся гласной: \n" + 
+                res.Substring(firstIndex, lastIndex - firstIndex + 1) :
+                "В строке нет гласных";
+
             return View();
         }
 

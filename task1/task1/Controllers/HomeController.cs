@@ -26,6 +26,7 @@ namespace task1.Controllers
             string res = "";
             string error = "";
             string abc = "abcdefghijklmnopqrstuvwxyz";
+            Dictionary<char, int> count = new Dictionary<char, int>();
             foreach (char ch in str)
             {
                 if (!abc.Contains(ch) || ch.ToString().ToLower() != ch.ToString())
@@ -48,22 +49,56 @@ namespace task1.Controllers
                 string str2 = str.Substring(size / 2);
                 for (int i = size / 2 - 1; i >= 0; i--)
                 {
-                    res += str1[i];
+                    char ch = str1[i];
+                    res += ch;
+                    if (!count.ContainsKey(ch))
+                    {
+                        count.Add(ch, 1);
+                    }
+                    else
+                    {
+                        count[ch]++;
+                    }
                 }
                 for (int i = size / 2 - 1; i >= 0; i--)
                 {
-                    res += str2[i];
+                    char ch = str2[i];
+                    res += ch;
+                    if (!count.ContainsKey(ch))
+                    {
+                        count.Add(ch, 1);
+                    }
+                    else
+                    {
+                        count[ch]++;
+                    }
                 }
             }
             else
             {
                 for (int i = size - 1; i >= 0; i--)
                 {
-                    res += str[i];
+                    char ch = str[i];
+                    res += ch;
+                    if (!count.ContainsKey(ch))
+                    {
+                        count.Add(ch, 2);
+                    }
+                    else
+                    {
+                        count[ch] += 2;
+                    }
                 }
                 res += str;
             }
+            string countstr = "Подсчёт символов:\n";
+            foreach (char key in count.Keys)
+            {
+                countstr += key + ": " + count[key].ToString() + '\n';
+            }
             ViewData["res"] = res;
+            ViewData["count"] = countstr;
+            ViewData["rows"] = count.Count() + 1;
             return View();
         }
 

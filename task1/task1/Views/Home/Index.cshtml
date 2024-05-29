@@ -8,5 +8,6 @@
     <input type="submit" value="Отправить" /><br />
     <label>Результат</label><br />
     <label name="res">@ViewData["res"]</label><br />
-    <label name="error">@ViewData["error"]</label>
+    <label name="error">@ViewData["error"]</label><br />
+    <textarea disabled name="count" rows=@ViewData["rows"]>@ViewData["count"]</textarea><br />
 </form>

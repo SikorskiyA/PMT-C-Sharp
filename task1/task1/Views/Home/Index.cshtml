@@ -1,14 +1,22 @@
-﻿@{
-    ViewData["Title"] = "task1";
-}
+﻿@model HomeViewModel
 
-<form method="post">
+
+<form asp-controller="Home" asp-action="Index" method="post">
     <label>Входная строка</label><br />
-    <input type="text" name="input"></input>
+    <input type="text" name="Input" asp-for="Input"></input>
+    <select class="form-select" asp-for="SelectedSort">
+        <option>
+            Quicksort
+        </option>
+        <option>
+            Treesort
+        </option>
+    </select>
     <input type="submit" value="Отправить" /><br />
     <label>Результат</label><br />
-    <label name="res">@ViewData["res"]</label><br />
-    <label name="error">@ViewData["error"]</label><br />
-    <textarea disabled name="count" rows=@ViewData["rows"]>@ViewData["count"]</textarea><br />
-    <textarea disabled name="longestSubstring" rows=5 cols=40>@ViewData["longestSubstring"]</textarea><br />
+    <label name="res">@Model.Res</label><br />
+    <label name="error">@Model.Error</label><br />
+    <textarea disabled name="count" rows=@Model.Rows>@Model.Count</textarea><br />
+    <textarea disabled name="longestSubstring" rows=5 cols=40>@Model.LongestSubstring</textarea><br />
+    <textarea disabled rows=3 cols=40>@Model.Sorted</textarea>
 </form>

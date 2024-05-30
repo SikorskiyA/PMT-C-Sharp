@@ -2,31 +2,39 @@
 using System.Diagnostics;
 using task1.Models;
 using task1.Views.Home;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace task1.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        public HomeViewModel HomeViewModel { get; set; }
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var model = new HomeViewModel();
+            return View(model);
         }
+
         [HttpPost]
-        public IActionResult Index(string input)
+        public IActionResult Index(HomeViewModel model)
         {
+            string input = model.Input;
+            if (input == null)
+            {
+                input = "";
+            }
             string str = input;
             int size = str.Length;
             string res = "";
             string error = "";
             string abc = "abcdefghijklmnopqrstuvwxyz";
             Dictionary<char, int> count = new Dictionary<char, int>();
+            var method = model.SelectedSort;
 
             foreach (char ch in str)
             {
@@ -42,8 +50,8 @@ namespace task1.Controllers
 
             if (error != "")
             {
-                ViewData["error"] = error;
-                return View();
+                model.Error = error;
+                return View(model);
             }
 
             if (size % 2 == 0)
@@ -120,26 +128,35 @@ namespace task1.Controllers
                 lastIndex = vowels.Contains(res[i]) ? i : -1;
             }
 
-            ViewData["res"] = res;
-            ViewData["count"] = countstr;
-            ViewData["rows"] = count.Count() + 2;
-            ViewData["longestSubstring"] = firstIndex >= 0 ? 
-                "Самая длинная подстрока, начинающаяся и заканчивающаяся гласной: \n" + 
+            char[] sorted;
+            string sortedstr = "";
+
+            if (method == "Quicksort")
+            {
+                sorted = Quicksort(res.ToArray(), 0, sizeNew - 1);
+            }
+            else
+            {
+                sorted = TreeSort(res.ToArray());
+            }
+
+            for (int i = 0; i < sizeNew; i++)
+            {
+                sortedstr += sorted[i];
+            }
+
+            model.Title = "task1";
+            model.Res = res;
+            model.Count = countstr;
+            model.Rows = count.Count() + 2;
+            model.LongestSubstring = firstIndex >= 0 ?
+                "Самая длинная подстрока, начинающаяся и заканчивающаяся гласной: \n" +
                 res.Substring(firstIndex, lastIndex - firstIndex + 1) :
                 "В строке нет гласных";
+            model.Sorted = "Отсортированная строка: \n" + sortedstr;
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            HomeViewModel = model;
+            return View(model);
         }
 
         [HttpGet]
@@ -150,6 +167,106 @@ namespace task1.Controllers
         {
             Console.WriteLine(input);
             return View();
+        }
+
+        public char[] Quicksort(char[] array, int leftIndex, int rightIndex)
+        {
+            var i = leftIndex;
+            var j = rightIndex;
+            var pivot = array[leftIndex];
+            while (i <= j)
+            {
+                while (array[i] < pivot)
+                {
+                    i++;
+                }
+
+                while (array[j] > pivot)
+                {
+                    j--;
+                }
+                if (i <= j)
+                {
+                    char temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+
+            if (leftIndex < j)
+                Quicksort(array, leftIndex, j);
+            if (i < rightIndex)
+                Quicksort(array, i, rightIndex);
+            return array;
+        }
+        private static char[] TreeSort(char[] array)
+        {
+            var treeNode = new TreeNode(array[0]);
+            for (int i = 1; i < array.Length; i++)
+            {
+                treeNode.Insert(new TreeNode(array[i]));
+            }
+
+            return treeNode.Transform();
+        }
+    }
+    public class TreeNode
+    {
+        public TreeNode(char data)
+        {
+            Data = data;
+        }
+
+        public char Data { get; set; }
+        public TreeNode Left { get; set; }
+        public TreeNode Right { get; set; }
+        public void Insert(TreeNode node)
+        {
+            if (node.Data < Data)
+            {
+                if (Left == null)
+                {
+                    Left = node;
+                }
+                else
+                {
+                    Left.Insert(node);
+                }
+            }
+            else
+            {
+                if (Right == null)
+                {
+                    Right = node;
+                }
+                else
+                {
+                    Right.Insert(node);
+                }
+            }
+        }
+        public char[] Transform(List<char> elements = null)
+        {
+            if (elements == null)
+            {
+                elements = new List<char>();
+            }
+
+            if (Left != null)
+            {
+                Left.Transform(elements);
+            }
+
+            elements.Add(Data);
+
+            if (Right != null)
+            {
+                Right.Transform(elements);
+            }
+
+            return elements.ToArray();
         }
     }
 }

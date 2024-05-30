@@ -14,8 +14,8 @@ namespace task1.Models
         public int Rows { get; set; }
         public string Count { get; set; }
         public string LongestSubstring { get; set; }
-
         public string Sorted { get; set; }
+        public string TrimmedString { get;set; }
 
         public HomeViewModel(string selectedSort,
             string title, string input, string res, string error, int rows, string count,

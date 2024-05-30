@@ -9,7 +9,6 @@ namespace task1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public HomeViewModel HomeViewModel { get; set; }
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -145,6 +144,32 @@ namespace task1.Controllers
                 sortedstr += sorted[i];
             }
 
+            int randIndex = -1;
+
+            try
+            {
+                var client = new HttpClient();
+                string url = "https://www.randomnumberapi.com/api/v1.0/random?min=0&max=" + (sizeNew - 1) + "&count=1";
+                var responce = client.GetAsync(url);
+                var apiResponce = responce.Result.Content.ReadAsStringAsync().Result;
+                string num = "";
+
+                for (int i = 1; i < apiResponce.Length && apiResponce[i] != ']'; i++)
+                {
+                    num += apiResponce[i];
+                }
+
+                randIndex = Convert.ToInt32(num);
+            }
+            catch
+            {
+                Random rand = new Random();
+                randIndex = rand.Next(0, sizeNew - 1);
+            }
+
+            string trimmedString = "Индекс удаляемого символа - " + randIndex.ToString() + "\nСтрока после обработки:\n" + res.Substring(0, randIndex) +
+                res.Substring(randIndex + 1, sizeNew - randIndex - 1);
+
             model.Title = "task1";
             model.Res = res;
             model.Count = countstr;
@@ -154,8 +179,8 @@ namespace task1.Controllers
                 res.Substring(firstIndex, lastIndex - firstIndex + 1) :
                 "В строке нет гласных";
             model.Sorted = "Отсортированная строка: \n" + sortedstr;
+            model.TrimmedString = trimmedString;
 
-            HomeViewModel = model;
             return View(model);
         }
 

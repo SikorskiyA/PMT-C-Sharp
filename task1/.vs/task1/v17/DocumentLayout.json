@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\PMT-C-Sharp\\task1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|c:\\pmt-c-sharp\\task1\\task1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|solutionrelative:task1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|c:\\pmt-c-sharp\\task1\\task1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|solutionrelative:task1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|c:\\pmt-c-sharp\\task1\\task1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|solutionrelative:task1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37306398-3154-4625-B9B8-FB681F8009A7}|task1\\task1.csproj|c:\\pmt-c-sharp\\task1\\task1\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\PMT-C-Sharp\\task1\\task1\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "task1\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\PMT-C-Sharp\\task1\\task1\\Controllers\\HomeController.cs",
               "RelativeToolTip": "task1\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAI8AAAAAAAAAAAAIwJsAAAArAAAA",
+              "ViewState": "AQIAAKQAAAAAAAAAAAAwwLIAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T13:27:46.702Z",
               "EditorCaption": ""
@@ -45,20 +45,20 @@
               "RelativeDocumentMoniker": "task1\\Models\\HomeViewModel.cs",
               "ToolTip": "C:\\PMT-C-Sharp\\task1\\task1\\Models\\HomeViewModel.cs",
               "RelativeToolTip": "task1\\Models\\HomeViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAoAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAwwBEAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-29T14:54:10.951Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\PMT-C-Sharp\\task1\\task1\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "task1\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\PMT-C-Sharp\\task1\\task1\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "task1\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAQAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABUAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-29T19:57:20.938Z",
               "EditorCaption": ""

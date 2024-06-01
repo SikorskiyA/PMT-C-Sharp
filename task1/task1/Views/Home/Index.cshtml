@@ -1,6 +1,8 @@
-﻿@model HomeViewModel
+﻿@model FormModel
 
-
+<head>
+    <title>Задание</title>
+</head>
 <form asp-controller="Home" asp-action="Index" method="post">
     <label>Входная строка</label><br />
     <input type="text" name="Input" asp-for="Input"></input>
@@ -14,10 +16,21 @@
     </select>
     <input type="submit" value="Отправить" /><br />
     <label>Результат</label><br />
-    <label name="res">@Model.Res</label><br />
-    <label name="error">@Model.Error</label><br />
-    <textarea disabled name="count" rows=@Model.Rows>@Model.Count</textarea><br />
-    <textarea disabled name="longestSubstring" rows=5 cols=40>@Model.LongestSubstring</textarea><br />
-    <textarea disabled rows=3 cols=40>@Model.Sorted</textarea><br />
-    <textarea disabled rows=4 cols=40>@Model.TrimmedString</textarea>
+    <label name="res">
+        Обработанная строка: @Model.Res
+        </label><br />
+    <label name="error">Ошибка. Неверные символы: @Model.Error</label><br />
+    <textarea readonly name="count" rows=@Model.Rows>
+        Посчёт символов: @Model.Count
+        </textarea><br />
+    <textarea readonly name="longestSubstring" rows=5 cols=40>
+        @(Model.firstIndex >= 0 ? "Самая длинная подстрока, начинающаяся и заканчивающаяся на гласную: " + Model.LongestSubstring : "В строке нет гласных")
+        </textarea><br />
+    <textarea readonly rows=3 cols=40>
+        Отсортированная методом @Model.SelectedSort строка: @Model.Sorted
+        </textarea><br />
+    <textarea readonly rows=4 cols=40>
+        Индекс удаляемого символа - @Model.TrimIndex
+        "Урезанная" строка: @Model.TrimmedString
+        </textarea>
 </form>

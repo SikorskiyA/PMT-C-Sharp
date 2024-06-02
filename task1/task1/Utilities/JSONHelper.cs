@@ -42,10 +42,13 @@ namespace task1.Utilities
     public class JSONHelperSettings
     {
         public List<string> BlackList { get; set; }
+        public int ParallelLimit { get; set; }
 
-        public JSONHelperSettings(List<string> blackList)
+        public JSONHelperSettings() {}
+        public JSONHelperSettings(List<string> blackList, int parallelLimit)
         {
             BlackList = blackList;
+            ParallelLimit = parallelLimit;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Text.Unicode;
 using task1.Models;
 using task1.Models.Errors;
 using task1.Services;
+using task1.Utilities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,16 +21,15 @@ namespace task1.Controllers
         FormModel model1 = new FormModel();
         // GET: api/<APIController>
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<APIController>/5
-
-        [HttpGet("{parse}/")]
         public IActionResult Get(string input, string sortMethod)
         {
+            JSONHelper jh = new JSONHelper();
+            jh.Deserialize();
+            if (jh.Settings.ParallelLimit <= RequestCounter.CurrentRequestCount)
+            {
+                return new StatusCodeResult(503);
+            }
+            RequestCounter.CurrentRequestCount++;
             var options1 = new JsonSerializerOptions
             {
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),

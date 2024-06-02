@@ -66,7 +66,7 @@ namespace task1.Services
             string error = "";
             string abc = "abcdefghijklmnopqrstuvwxyz";
             Dictionary<char, int> count = new Dictionary<char, int>();
-            var method = model.SelectedSort;
+            var method = model.SelectedSort.ToLower();
 
             if (JSONHelper.IsBlackListed(input))
             {
@@ -85,6 +85,12 @@ namespace task1.Services
             if (error != "")
             {
                 model.Error = "Неверные символы: " + error;
+                return model;
+            }
+
+            if (method != "quicksort" && method != "treesort")
+            {
+                model.Error = "Неверный метод сортировки: " + method;
                 return model;
             }
 
@@ -159,7 +165,7 @@ namespace task1.Services
             char[] sorted;
             string sortedstr = "";
 
-            if (method == "Quicksort")
+            if (method == "quicksort")
             {
                 sorted = Quicksort(res.ToArray(), 0, sizeNew - 1);
             }

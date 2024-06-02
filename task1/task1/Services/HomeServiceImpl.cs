@@ -1,4 +1,6 @@
-﻿using System.Net.Mail;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 using task1.Controllers;
 using task1.Models;
 using task1.Utilities;
@@ -51,6 +53,8 @@ namespace task1.Services
         }
         public FormModel ParseModel(FormModel model)
         {
+            JSONHelper json = new JSONHelper();
+            json.Deserialize();
             string input = model.Input;
             if (input == null)
             {
@@ -64,6 +68,12 @@ namespace task1.Services
             Dictionary<char, int> count = new Dictionary<char, int>();
             var method = model.SelectedSort;
 
+            if (JSONHelper.IsBlackListed(input))
+            {
+                model.Error = "Введённая строка находится в чёрном списке: " + input;
+                return model;
+            }
+
             foreach (char ch in str)
             {
                 if (!abc.Contains(ch) || ch.ToString().ToLower() != ch.ToString())
@@ -74,7 +84,7 @@ namespace task1.Services
 
             if (error != "")
             {
-                model.Error = error;
+                model.Error = "Неверные символы: " + error;
                 return model;
             }
 
@@ -168,7 +178,7 @@ namespace task1.Services
             try
             {
                 var client = new HttpClient();
-                string url = "https://www.randomnumberapi.com/api/v1.0/random?min=0&max=" + (sizeNew - 1) + "&count=1";
+                string url = json.RandomApi + "min=0&max=" + (sizeNew - 1) + "&count=1";
                 var responce = client.GetAsync(url);
                 var apiResponce = responce.Result.Content.ReadAsStringAsync().Result;
                 string num = "";

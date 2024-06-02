@@ -45,7 +45,7 @@ namespace task1.Controllers
             {
                 Error error = new Error(
                     400,
-                    "Bad request. Некорректный запрос. Неверные символы: " + model.Error
+                    "Bad request. Некорректный запрос. " + model.Error
                     );
                 json = JsonSerializer.Serialize(error, options1);
                 return new BadRequestObjectResult(json);

@@ -6,12 +6,14 @@ namespace task1.Models
     [Serializable]
     public class FormModel
     {
+        public string Input { get; set; }
         public string Res { get; set; }
-        public int firstIndex { get;set; }
-        public int lastIndex { get;set; }
+        [NonSerialized]
+        public int firstIndex;
+        [NonSerialized]
+        public int lastIndex;
         public string SelectedSort { get; set; }
         [ViewData]
-        public string Input { get; set; }
         public int Rows { get; set; }
         public Dictionary<char, int> Count { get; set; }
         public string LongestSubstring { get; set; }

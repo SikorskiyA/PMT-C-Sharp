@@ -24,6 +24,24 @@ namespace task1.Controllers
             string str = input;
             int size = str.Length;
             string res = "";
+            string error = "";
+            string abc = "abcdefghijklmnopqrstuvwxyz";
+            foreach (char ch in str)
+            {
+                if (!abc.Contains(ch) || ch.ToString().ToLower() != ch.ToString())
+                {
+                    if (error == "")
+                    {
+                        error = "Ошибка. Неверные символы: ";
+                    }
+                    error += ch;
+                }
+            }
+            if (error != "")
+            {
+                ViewData["error"] = error;
+                return View();
+            }
             if (size % 2 == 0)
             {
                 string str1 = str.Substring(0, size / 2);

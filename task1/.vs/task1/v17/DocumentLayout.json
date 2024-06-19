@@ -42,8 +42,7 @@
               "RelativeToolTip": "task1\\Views\\Home\\GetString.cshtml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T14:27:30.106Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T14:27:30.106Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "task1\\Views\\Home\\GetString.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-28T13:42:10.327Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T13:42:10.327Z"
             },
             {
               "$type": "Document",
@@ -66,7 +64,7 @@
               "RelativeDocumentMoniker": "task1\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\PMT-C-Sharp\\task1\\task1\\Controllers\\HomeController.cs",
               "RelativeToolTip": "task1\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAawCsAAAAiAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAqwCkAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T13:27:46.702Z",
               "EditorCaption": ""
@@ -79,7 +77,7 @@
               "RelativeDocumentMoniker": "task1\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\PMT-C-Sharp\\task1\\task1\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "task1\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAsAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T12:05:40.218Z",
               "EditorCaption": ""
@@ -94,8 +92,7 @@
               "RelativeToolTip": "task1\\Program.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T12:04:37.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T12:04:37.347Z"
             }
           ]
         }
